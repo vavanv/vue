@@ -4,38 +4,38 @@ import Column from 'primevue/column'
 import InputText from 'primevue/inputtext'
 import { FilterMatchMode } from '@primevue/core/api'
 import AppDataTable from '@/components/AppDataTable.vue'
-import employeesData from '@/assets/employee.json'
+import customersData from '@/assets/customers.json'
 
-interface Employee {
+interface Customer {
   id: number
   name: string
-  role: string
-  department: string
+  company: string
+  status: string
   email: string
 }
 
-const employees = ref<Employee[]>([])
+const customers = ref<Customer[]>([])
 const filters = ref({
   name: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  role: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  department: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  company: { value: null, matchMode: FilterMatchMode.CONTAINS },
+  status: { value: null, matchMode: FilterMatchMode.CONTAINS },
   email: { value: null, matchMode: FilterMatchMode.CONTAINS },
 })
 
 onMounted(() => {
-  employees.value = employeesData
+  customers.value = customersData
 })
 </script>
 
 <template>
-  <div class="employee-page glass">
+  <div class="customers-page glass">
     <div class="page-header">
-      <h1 class="primary">Employee Directory</h1>
-      <p>Manage and view all company employees in one place.</p>
+      <h1 class="primary">Customers Directory</h1>
+      <p>Manage and view all your key customer relationships.</p>
     </div>
 
     <AppDataTable
-      :value="employees"
+      :value="customers"
       paginator
       :rows="20"
       :rowsPerPageOptions="[10, 20, 50, 100]"
@@ -54,24 +54,24 @@ onMounted(() => {
           />
         </template>
       </Column>
-      <Column field="role" header="Role" sortable style="width: 25%">
+      <Column field="company" header="Company" sortable style="width: 25%">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search role"
+            placeholder="Search company"
             class="p-column-filter"
           />
         </template>
       </Column>
-      <Column field="department" header="Department" sortable style="width: 20%">
+      <Column field="status" header="Status" sortable style="width: 20%">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search department"
+            placeholder="Search status"
             class="p-column-filter"
           />
         </template>
@@ -92,7 +92,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.employee-page {
+.customers-page {
   padding: 1rem;
   margin: 0;
   height: 100%;

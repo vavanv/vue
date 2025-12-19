@@ -17,6 +17,8 @@ import ThemeToggle from './components/ThemeToggle.vue'
         <nav>
           <RouterLink to="/" class="nav-link">Home</RouterLink>
           <RouterLink to="/employees" class="nav-link">Employee</RouterLink>
+          <RouterLink to="/customers" class="nav-link">Customers</RouterLink>
+          <RouterLink to="/products" class="nav-link">Products</RouterLink>
           <RouterLink to="/about" class="nav-link">About</RouterLink>
         </nav>
       </div>

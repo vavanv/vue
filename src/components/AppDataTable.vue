@@ -47,6 +47,7 @@ onUnmounted(() => {
       :paginator="paginator"
       :rows="rows"
       :rowsPerPageOptions="rowsPerPageOptions"
+      filterDisplay="row"
       class="p-datatable-sm sticky-header-table"
     >
       <!-- Forward all slots to the underlying DataTable -->
